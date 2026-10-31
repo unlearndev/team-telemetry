@@ -1,0 +1,9 @@
+{
+  "team": "Payments",
+  "people": {
+    "alex@pettycash.example": "Alex",
+    "priya@pettycash.example": "Priya",
+    "sam@pettycash.example": "Sam",
+    "jo@pettycash.example": "Jo"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "team-telemetry",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A tiny OpenTelemetry collector and dashboard for a team's Claude Code usage",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "sample": "node scripts/load-sample.mjs",
+    "clear": "node scripts/clear.mjs",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5",
+    "vitest": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=22.12"
+  }
+}

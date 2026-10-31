@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Team telemetry</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Claude Code across the team</h1>
+      <p id="range"></p>
+    </header>
+    <main>
+      <h2>By person</h2>
+      <table id="people">
+        <thead>
+          <tr>
+            <th>Who</th>
+            <th>Sessions</th>
+            <th>Active hours</th>
+            <th>Cost</th>
+            <th>Lines added</th>
+            <th>Commits</th>
+            <th>Prompts answered</th>
+            <th>Last seen</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <h2>Approved by hand</h2>
+      <p class="hint">Commands people said yes to at a permission prompt</p>
+      <table id="approved">
+        <thead>
+          <tr>
+            <th>Command</th>
+            <th>Times</th>
+            <th>Who</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </main>
+    <script type="module" src="/src/dashboard.js"></script>
+  </body>
+</html>
