@@ -30,10 +30,10 @@ const team = [
     approvals: { 'git push -u origin HEAD': 4 },
   },
   {
-    // Sam works in Manual mode, so he's asked about anything no rule allows
+    // Sam works in acceptEdits mode, so Sam's asked about every command no rule allows
     email: 'sam@pettycash.example',
     sessionsPerDay: [1, 4],
-    mode: 'default',
+    mode: 'acceptEdits',
     approvals: {
       'npx vitest run test/api/claims.test.js': 14,
       'npx vitest run test/policy.test.js': 6,
