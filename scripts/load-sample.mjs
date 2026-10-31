@@ -71,7 +71,8 @@ for (const person of team) {
       metric('claude_code.lines_of_code.count', int(2, 90), { type: 'removed' })
       metric('claude_code.code_edit_tool.decision', int(3, 14), { decision: 'accept', tool_name: 'Edit' })
       if (random() < 0.25) metric('claude_code.code_edit_tool.decision', int(1, 2), { decision: 'reject', tool_name: 'Edit' })
-      if (random() < 0.4) metric('claude_code.commit.count', 1)
+      // Someone in acceptEdits mode approves each commit by hand, so their commits come from those approvals below
+      if (random() < 0.4 && person.mode !== 'acceptEdits') metric('claude_code.commit.count', 1)
       if (random() < 0.12) metric('claude_code.pull_request.count', 1)
       sessions.push({ t, attrs })
     }
@@ -93,6 +94,9 @@ for (const person of team) {
           tool_parameters: JSON.stringify({ bash_command: full_command.split(' ')[0], full_command }),
         },
       })
+      if (full_command.includes('git commit')) {
+        records.push({ t: session.t + 1600 * 1000, kind: 'metric', name: 'claude_code.commit.count', value: 1, attrs: session.attrs })
+      }
     }
   }
 }
