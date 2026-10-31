@@ -27,10 +27,12 @@ function blank(name) {
 }
 
 // Bash commands only arrive when OTEL_LOG_TOOL_DETAILS=1. Without it, we only know the tool.
-function command(attrs) {
+// Anything in quotes, like a commit message, is hidden, so the same command groups together.
+export function command(attrs) {
   if (attrs.tool_name !== 'Bash') return attrs.tool_name
   try {
-    return JSON.parse(attrs.tool_parameters).full_command ?? 'Bash'
+    const full = JSON.parse(attrs.tool_parameters).full_command ?? 'Bash'
+    return full.replace(/"[^"]*"/g, '"…"').replace(/'[^']*'/g, "'…'")
   } catch {
     return 'Bash'
   }

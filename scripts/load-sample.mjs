@@ -30,7 +30,7 @@ const team = [
     approvals: { 'git push -u origin HEAD': 4 },
   },
   {
-    // Sam works in acceptEdits mode, so Sam's asked about every command no rule allows
+    // Sam works in acceptEdits mode, so Sam's asked about most commands no rule allows
     email: 'sam@pettycash.example',
     sessionsPerDay: [1, 4],
     mode: 'acceptEdits',
@@ -38,6 +38,9 @@ const team = [
       'npx vitest run test/api/claims.test.js': 14,
       'npx vitest run test/policy.test.js': 6,
       'npx vitest run test/money.test.js': 3,
+      'git add -A && git commit -m "fix: reject claims dated in the future"': 3,
+      'git add -A && git commit -m "feat: show the approver on each claim"': 3,
+      'git add -A && git commit -m "test: cover the receipt rule at exactly £10"': 3,
       'git push -u origin HEAD': 5,
     },
   },

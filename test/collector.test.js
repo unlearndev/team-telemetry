@@ -82,6 +82,16 @@ describe('collector', () => {
     expect(summary.approvedByHand).toEqual([{ command: 'git diff', times: 2, people: ['sam@x'] }])
   })
 
+  it('hides quoted text, so commit messages group together', () => {
+    const records = [
+      ...eventRecords(decision('user_temporary', 'git commit -m "fix: one"')),
+      ...eventRecords(decision('user_temporary', 'git commit -m "feat: two"')),
+    ]
+    expect(summarise(records, { now }).approvedByHand).toEqual([
+      { command: 'git commit -m "…"', times: 2, people: ['sam@x'] },
+    ])
+  })
+
   it('leaves out anything older than the window', () => {
     const old = metricRecords(metrics).map((r) => ({ ...r, t: now - 30 * 86400000 }))
     expect(summarise(old, { now }).people).toEqual([])
