@@ -15,8 +15,7 @@ function cells(values) {
 async function render() {
   const days = new URLSearchParams(location.search).get('days') ?? 14
   const data = await (await fetch(`/api/summary?days=${days}`)).json()
-  const outside = data.outsideTheTeam ? ` · ${data.outsideTheTeam} sessions from people not on the team` : ''
-  document.querySelector('#range').textContent = `Last ${data.days} days${outside}`
+  document.querySelector('#range').textContent = `Payments team · last ${data.days} days`
   document.querySelector('#people tbody').replaceChildren(
     ...data.people.map((p) =>
       cells([
